@@ -1,15 +1,10 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const handleclick = () => {
-        setEmail("guest@gmail.com")
-        setPassword("123456")
-    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!email || !password) {
@@ -47,9 +42,6 @@ const Login = () => {
                 </div>
                 <div>
                     <button className='smtbtn'>Login</button>
-                </div>
-                <div>
-                    <button style={{ background: "tomato" }} onClick={handleclick} className='smtbtn'>Get User Credentials</button>
                 </div>
             </form>
         </div>

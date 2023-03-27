@@ -1,30 +1,12 @@
-.product_card{
-    box-sizing: border-box;
-    text-align: center;
-    height: 50vh;
-    width: 25%;
-    padding: 10px 0px;
+.Products_Main {
+    display: flex;
+    flex-wrap: wrap;
+    padding:10px;
 }
 
-.product_cardImg{
-    padding: 10px;
-    height: 60%;
-    width: 180px;
-    margin: 0px auto;
-
-}
-.product_cardTitle{
-    height: 20%;
-}
-.product_cardPrice{
-    height: 10%;
-}
-.product_cardButton button{
-    width: 80%;
-    margin: 0px auto;
-    background-color: aqua;
-    border-radius: 10px;
-}
-.product_cardButton{
-    height: 10%;
+@media only screen and (max-width: 425px) {
+    .Product_cart{
+        width: 40vh;
+    }
+    
 }

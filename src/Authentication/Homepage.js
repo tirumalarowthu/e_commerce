@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import "./HomepageStyles.css"
-import Header from '../Components/Header';
+import HeaderOne from '../Components/HeaderOne';
 const Homepage = () => {
           const [key, setKey] = useState(false);
           //if user in local storage then it will directly login
@@ -16,7 +16,7 @@ const Homepage = () => {
     }, [navigate])
           return (
           <>
-                <Header/>
+                <HeaderOne/>
               <div style={{marginTop:"60px"}} className='App'>
                   <div className="Homepageheader">
                       <div className="homepage">
