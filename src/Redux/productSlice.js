@@ -19,9 +19,7 @@ const productSlice=createSlice({
     name:'productSlice',
     initialState,
     reducers:{
-        searchProducts:(state,action)=>{
-            
-        }
+        
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchProducts.pending,(state,action)=>{
@@ -35,6 +33,5 @@ const productSlice=createSlice({
     }
 })
 export default productSlice.reducer
-export const {searchProducts}=productSlice.actions
 
 
