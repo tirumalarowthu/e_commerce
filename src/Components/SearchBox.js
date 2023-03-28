@@ -9,16 +9,20 @@ const SearchBox = () => {
     const handleOnKeyUp = (e) => {
         products.filter((item) => {
             if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
-                document.getElementById(item.id).style.display = "block"
+                if (document.getElementById(item.id)) {
+                    document.getElementById(item.id).style.display = "block"
+                }
             } else {
-                document.getElementById(item.id).style.display = "none"
+                if (document.getElementById(item.id)) {
+                    document.getElementById(item.id).style.display = "none"
+                }
             }
             return item.title.toLowerCase().includes(searchValue.toLowerCase())
         })
     }
-     
+
     return (
-        <div style={{width:"100%"}}>
+        <div style={{ width: "100%" }}>
             <div className=" ">
                 <div className="input-group">
                     <input placeholder='Search products...' value={searchValue} onKeyUp={handleOnKeyUp} onChange={handleSearchChange} className="form-control border-end-0 border rounded-pill" type="text" id="example-search-input" />

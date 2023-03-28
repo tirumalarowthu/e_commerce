@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../Redux/cartSlice'
 import { fetchProducts } from '../Redux/productSlice'
@@ -7,6 +7,13 @@ import "./ProductStyles.css"
 const Products = () => {
     const status = useSelector(state => state.productList.status)
     const products = useSelector(state => state.productList.products)
+    ///
+    const [page, setPage] = useState(1)
+    const selectPageHandler = (selectedPage) => {
+        if (selectedPage >= 1 && selectedPage <= products.length / 96 && selectedPage !== page) {
+            setPage(selectedPage)
+        }
+    }
     // const cartItems = useSelector(state => state.cart.cartItems)
     // console.log(cartItems)
     // console.log(SearchProducts)
@@ -26,7 +33,7 @@ const Products = () => {
 
         content = <div className='Products_Main' style={{}}>
             {
-                products.map((item, index) => {
+                products.slice(page * 96 - 96, page * 96).map((item, index) => {
                     return <div id={item.id} className='p-1 col-lg-3 col-md-4 col-sm-2 col-xs-1  text-center' key={index}>
                         <div style={{ height: "60vh" }} className='border p-4 rounded Product_cart'>
                             <div style={{ height: "50%" }}> <img alt={item.title} width="80%" height="100%" src={item.image} /></div>
@@ -39,6 +46,19 @@ const Products = () => {
                         </div>
                     </div>
                 })
+
+                
+            }
+            {
+                products.length > 0 && <div className="pagination">
+                    <span onClick={() => selectPageHandler(page - 1)} className={page > 1 ? "" : "pagination__disable"}>◀</span>
+
+                    {[...Array(products.length / 96)].map((_, i) => {
+                        return <span key={i} className={page === i + 1 ? "pagination__selected" : ""} onClick={() => selectPageHandler(i + 1)}>{i + 1}</span>
+                    })}
+
+                    <span onClick={() => selectPageHandler(page + 1)} className={page < products.length / 96 ? "" : "pagination__disable"}>▶</span>
+                </div>
             }
         </div>
     }
